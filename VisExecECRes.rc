@@ -7,17 +7,55 @@ BEGIN
     POPUP "&File"
     BEGIN
         MENUITEM "&New",                        IDM_VISEXECEC_MNUFILENEW
+        MENUITEM "&Open...",                    IDM_VISEXECEC_MNUFILEOPEN
+        MENUITEM "&Save",                       IDM_VISEXECEC_MNUFILESAVE
+        MENUITEM "&Save &As...",                IDM_VISEXECEC_MNUFILESAVEAS
+        MENUITEM SEPARATOR
+        MENUITEM "&Print",                      IDM_VISEXECEC_MNUFILEPRINT
+        MENUITEM "P&rint Setup...",             IDM_VISEXECEC_MNUFILEPRINTSETUP
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       IDM_VISEXECEC_MNUFILEEXIT
     END
     POPUP "&Edit"
     BEGIN
         MENUITEM "&Undo",                       IDM_VISEXECEC_MNUEDITUNDO
+        MENUITEM "&Redo",                       IDM_VISEXECEC_MNUEDITREDO
+        MENUITEM SEPARATOR
+        MENUITEM "Select &All",                 IDM_VISEXECEC_MNUEDITSELECTALL
+        MENUITEM "Cu&t",                        IDM_VISEXECEC_MNUEDITCUT
+        MENUITEM "&Copy",                       IDM_VISEXECEC_MNUEDITCOPY
+        MENUITEM "&Paste",                      IDM_VISEXECEC_MNUEDITPASTE
+        MENUITEM "Paste &Special...",           IDM_VISEXECEC_MNUEDITPASTESPECIAL
+        MENUITEM "&Delete",                     IDM_VISEXECEC_MNUEDITDELETE
+        MENUITEM SEPARATOR
+        MENUITEM "&Find...",                    IDM_VISEXECEC_MNUEDITFIND
+        MENUITEM "&Replace...",                 IDM_VISEXECEC_MNUEDITREPLACE
+        MENUITEM "&Go To...",                   IDM_VISEXECEC_MNUEDITGOTO
+        MENUITEM SEPARATOR
+        MENUITEM "&Refresh",                    IDM_VISEXECEC_MNUEDITREFRESH
+        MENUITEM SEPARATOR
+        MENUITEM "P&roperties...",              IDM_VISEXECEC_MNUEDITPROPERTIES
+        MENUITEM "&Preferences...",             IDM_VISEXECEC_MNUEDITPREFRENCES
     END
     POPUP "&Window"
     BEGIN
+        MENUITEM "&New Window",                 IDM_VISEXECEC_MNUWINDOWNEW
         MENUITEM "&Tile",                       IDM_VISEXECEC_MNUWINDOWTILE
+        MENUITEM "&Cascade",                    IDM_VISEXECEC_MNUWINDOWCASCADE
+        MENUITEM "&Arrange All",                IDM_VISEXECEC_MNUWINDOWARRANGEALL
+        MENUITEM SEPARATOR
+        MENUITEM "&Hide",                       IDM_VISEXECEC_MNUWINDOWHIDE
+        MENUITEM "&Show",                       IDM_VISEXECEC_MNUWINDOWSHOW
     END
     POPUP "&Help"
     BEGIN
+        MENUITEM "Help &Contents",              IDM_VISEXECEC_MNUHELPCONTENTS
+        MENUITEM "Help &Index",                 IDM_VISEXECEC_MNUHELPINDEX
+        MENUITEM "Help &On Help",               IDM_VISEXECEC_MENUHELPHELP
+        MENUITEM SEPARATOR
+        MENUITEM "Licence &Information",        IDM_VISEXECEC_MNUHELPLICENCE
+        MENUITEM "Check for &Updates",          IDM_VISEXECEC_MNUHELPUPDATE
+        MENUITEM SEPARATOR
         MENUITEM "&About",                      IDM_VISEXECEC_MNUHELPABOUT
     END
 END
