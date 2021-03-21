@@ -1070,8 +1070,8 @@
 	#define IDCANCEL						2
 #endif
 #define IDR_VERSION                         1
-#define IDR_EC_ACCEL_TABLE                  100
-#define IDR_EC_VISEXECEC_MENU               101
+#define IDR_EC_ACCEL_TABLE                  118
+#define IDR_EC_VISEXECEC_MENU               119
 #define RT_FILEDATA                         256
 #define IDC_VISEXECEC_LBLSOMESTRING         1000
 #define IDC_VISEXECEC_TXTSOMESTRING         1001
@@ -1081,14 +1081,13 @@
 #define IDC_VISEXECEC_LBLSOMEDATE           1005
 #define IDC_VISEXECEC_DTMSOMEDATE           1006
 #define IDC_VISEXECEC_GRPTOOLBAR            1007
-#define IDC_VISEXECEC_BUTTON1               1008
+#define IDC_VISEXECEC_BTNFILENEW            1008
 #define IDC_VISEXECEC_GRPSTATUS             1009
 #define IDC_VISEXECEC_PRGPROGRESS           1010
 #define IDC_VISEXECEC_PICDIRTY              1011
-#define IDC_VISEXECEC_IMAGE2                1012
+#define IDC_VISEXECEC_PICACTION             1012
 #define IDC_VISEXECEC_LBLSTATUS             1013
 #define IDC_VISEXECEC_LBLERROR              1014
-#define IDC_VISEXECEC_IMAGELIST1            1015
 #define IDM_VISEXECEC_MNUFILENEW            40000
 #define IDM_VISEXECEC_MNUFILEOPEN           40001
 #define IDM_VISEXECEC_MNUFILESAVE           40002
