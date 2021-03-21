@@ -60,9 +60,9 @@ OnVisExecECCommand Frame hWndParent, uCtlID, uCode, hWndChild
 	;============================================================
 	; Code for WM_COMMAND messages (child controls notifications)
 	;============================================================
-	Invoke GetWindowItem, [hWndParent], IDC_VISEXECEC_TOOLBAR1
-	Mov Rbx, Rax
-	Cmp Rbx, [hWndChild]	;Is lParam the tool bar handle?
+;	Invoke GetWindowItem, [hWndParent], IDC_VISEXECEC_TOOLBAR1
+;	Mov Rbx, Rax
+;	Cmp Rbx, [hWndChild]	;Is lParam the tool bar handle?
 	Jne >> L4
 
 ;RETURN
@@ -233,7 +233,16 @@ EndF
 
 
 
-VisExecECToolBar1 Frame hWnd, uMsg, wParam, lParam
+VisExecECgrpToolbar Frame hWnd, uMsg, wParam, lParam
+	;==================================
+	;Write your code here or delete the
+	;whole procedure if it's not needed
+	;==================================
+	Xor Rax, Rax	;Return (FALSE)
+	Ret
+EndF
+
+VisExecECbtnFileNew Frame hWnd, uMsg, wParam, lParam
 	;==================================
 	;Write your code here or delete the
 	;whole procedure if it's not needed
