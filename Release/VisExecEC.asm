@@ -2,6 +2,8 @@
 
 .Data
 
+hwndToolTips	DQ	NULL
+
 .Code
 
 VisExecECProcedure Frame hWnd, uMsg, wParam, lParam
@@ -45,57 +47,6 @@ L2:	Ret
 :	Xor Rax, Rax	;Return (FALSE)
 	Jmp << L2
 EndF
-;VisExecECProcedure Proc hWnd:HWND, uMsg:ULONG, wParam:WPARAM, lParam:LPARAM
-;	.If uMsg == WM_CREATE
-;		;====================
-;		; Initialization code
-;		;====================
-;	.ElseIf uMsg == ECM_AFTERCREATE
-;		;===============================
-;		; Just after the window has been
-;		; created but before it is shown
-;		;===============================
-;	.ElseIf uMsg == WM_COMMAND
-;		Mov Edx, wParam
-;		Movzx Eax, Dx
-;		Shr Edx, 16
-;		Invoke OnVisExecECCommand, hWnd, Eax, Edx, lParam
-;@@:		Ret
-;	.ElseIf uMsg == WM_NOTIFY
-;		Invoke OnVisExecECNotify, hWnd, lParam
-;		Jmp @B
-;	.ElseIf uMsg == WM_CLOSE
-;		Invoke IsModal, hWnd
-;		.If Eax
-;			Invoke EndModal, hWnd, IDCANCEL
-;			Mov Eax, TRUE	;Return TRUE
-;			Jmp @B
-;		.EndIf
-;	.ElseIf uMsg == WM_DESTROY
-;		;===========
-;		; Final code
-;		;===========
-;	.EndIf
-;	Xor Eax, Eax	;Return FALSE
-;	Jmp @B
-;VisExecECProcedure EndP
-
-;OnVisExecECCommand Proc Private hWndParent:HWND, uCtlID:ULONG, uCode:ULONG, hWndChild:HWND
-;	;============================================================
-;	; Code for WM_COMMAND messages (child controls notifications)
-;	;============================================================
-;	Xor Eax, Eax	;Return FALSE
-;	Ret
-;OnVisExecECCommand EndP
-;
-;OnVisExecECNotify Proc Private hWndParent:HWND, lpNMHDR:LPLONG
-;	;===========================================================
-;	; Code for WM_NOTIFY messages (child controls notifications)
-;	;===========================================================
-;	Xor Eax, Eax	;Return FALSE
-;	Ret
-;OnVisExecECNotify EndP
-
 
 OnVisExecECCreate: UseData VisExecECProcedure
 	;====================
@@ -109,9 +60,44 @@ OnVisExecECCommand Frame hWndParent, uCtlID, uCode, hWndChild
 	;============================================================
 	; Code for WM_COMMAND messages (child controls notifications)
 	;============================================================
-	Xor Rax, Rax	;Return (FALSE)
+	Invoke GetWindowItem, [hWndParent], IDC_VISEXECEC_TOOLBAR1
+	Mov Rbx, Rax
+	Cmp Rbx, [hWndChild]	;Is lParam the tool bar handle?
+	Jne >> L4
+
+;RETURN
+L2:	Mov Rax, TRUE
 	Ret
+
+L4:	;Process menu commands
+	Cmp Q[uCtlID], IDM_VISEXECEC_MNUFILENEW
+	Jne >
+	;NEW
+	;
+	;Invoke ?
+	Jmp << L2
+
+:	Cmp Q[uCtlID], IDM_VISEXECEC_MNUFILEOPEN
+	Jne >
+	;OPEN
+	;
+	;Invoke ?
+	Jmp << L2
+
+
+:	Cmp Q[uCtlID], IDM_VISEXECEC_MNUFILEEXIT
+	Jne >
+	;OPEN
+	Invoke SendMessage, [hWndParent], WM_CLOSE, 0, 0
+	Jmp << L2
+
+:
+	Jmp << L2
+
+
 EndF
+
+
 
 OnVisExecECNotify Frame hWndParent, lpNMHDR
 	;===========================================================
@@ -119,7 +105,11 @@ OnVisExecECNotify Frame hWndParent, lpNMHDR
 	;===========================================================
 	Xor Rax, Rax	;Return (FALSE)
 	Ret
+
+
 EndF
+
+
 
 OnVisExecECClose Frame hWnd, uMsg, wParam, lParam
 	Invoke IsModal, [hWnd]
@@ -187,24 +177,6 @@ VisExecECdtmSomeDate Frame hWnd, uMsg, wParam, lParam
 	Ret
 EndF
 
-VisExecECgrpToolbar Frame hWnd, uMsg, wParam, lParam
-	;==================================
-	;Write your code here or delete the
-	;whole procedure if it's not needed
-	;==================================
-	Xor Rax, Rax	;Return (FALSE)
-	Ret
-EndF
-
-VisExecECbtnFileNew Frame hWnd, uMsg, wParam, lParam
-	;==================================
-	;Write your code here or delete the
-	;whole procedure if it's not needed
-	;==================================
-	Xor Rax, Rax	;Return (FALSE)
-	Ret
-EndF
-
 VisExecECgrpStatus Frame hWnd, uMsg, wParam, lParam
 	;==================================
 	;Write your code here or delete the
@@ -260,3 +232,12 @@ VisExecEClblError Frame hWnd, uMsg, wParam, lParam
 EndF
 
 
+
+VisExecECToolBar1 Frame hWnd, uMsg, wParam, lParam
+	;==================================
+	;Write your code here or delete the
+	;whole procedure if it's not needed
+	;==================================
+	Xor Rax, Rax	;Return (FALSE)
+	Ret
+EndF
